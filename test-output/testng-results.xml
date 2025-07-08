@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
+  <reporter-output>
+  </reporter-output>
+  <suite started-at="2025-07-05T14:01:25 IST" name="Default suite" finished-at="2025-07-05T14:02:02 IST" duration-ms="37202">
+    <groups>
+    </groups>
+    <test started-at="2025-07-05T14:01:25 IST" name="Default test" finished-at="2025-07-05T14:02:02 IST" duration-ms="37202">
+      <class name="Test1.VarDetailTC">
+        <test-method is-config="true" signature="openBrowser()[pri:0, instance:Test1.VarDetailTC@4bdeaabb]" started-at="2025-07-05T14:01:25 IST" name="openBrowser" finished-at="2025-07-05T14:01:34 IST" duration-ms="9365" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- openBrowser -->
+        <test-method is-config="true" signature="login()[pri:0, instance:Test1.VarDetailTC@4bdeaabb]" started-at="2025-07-05T14:01:37 IST" name="login" finished-at="2025-07-05T14:01:37 IST" duration-ms="6" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- login -->
+        <test-method signature="getModelPageDataTest(java.lang.String,java.lang.String,java.lang.String,java.lang.String)[pri:0, instance:Test1.VarDetailTC@4bdeaabb]" started-at="2025-07-05T14:01:37 IST" name="getModelPageDataTest" data-provider="ModelDS" finished-at="2025-07-05T14:02:02 IST" duration-ms="25702" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[3]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[Hyundai]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[Creta]]>
+              </value>
+            </param>
+            <param index="3">
+              <value>
+                <![CDATA[S(O) D MT DT Knight]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- getModelPageDataTest -->
+        <test-method is-config="true" signature="closeBrowser()[pri:0, instance:Test1.VarDetailTC@4bdeaabb]" started-at="2025-07-05T14:02:02 IST" name="closeBrowser" finished-at="2025-07-05T14:02:02 IST" duration-ms="1" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- closeBrowser -->
+      </class> <!-- Test1.VarDetailTC -->
+    </test> <!-- Default test -->
+  </suite> <!-- Default suite -->
+</testng-results>
