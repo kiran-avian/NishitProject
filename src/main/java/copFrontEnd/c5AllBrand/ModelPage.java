@@ -55,7 +55,7 @@ public class ModelPage {
 	@FindBy(xpath = "//a[.='Specs']")
 	private WebElement specificationBtn;
 	@FindBy(xpath = "//a[.='Overview']")
-	private WebElement 	overviewBtn;
+	private WebElement overviewBtn;
 
 	@FindBy(xpath = "(//div[@role='tabpanel'])[1]//button/span")
 	private List<WebElement> specificationBtnLst;
@@ -89,31 +89,40 @@ public class ModelPage {
 	private List<WebElement> rowLst;
 	@FindBy(xpath = "//h1")
 	private WebElement titleEle;
-	@FindBy(linkText =   "Specs")
+	@FindBy(linkText = "Specs")
 	private WebElement specBtn;
-	
+
 	Actions act;
 	WebDriverWait wait;
-	
+
 	public ModelPage(WebDriver driver) {
 		// PageFactory.initElements(driver, this);
 		PageFactory.initElements(new AjaxElementLocatorFactory(driver, 5), this);
 		this.act = new Actions(driver);
 		this.wait = new WebDriverWait(driver, Duration.ofSeconds(5));
 	}
-	public void clickModelPageVarientHeadSpecs(WebDriver driver) {
+
+	public void clickModelPageVarientHeadSpecs(WebDriver driver) throws InterruptedException {
 		WaitUtils.waitToBeClickable(driver, specBtn, 10);
-		specBtn.click();WaitUtils.waitToBeClickable(driver, specBtn, 10);
+		try {
+			specBtn.click();
+			Thread.sleep(1000);
+			WaitUtils.waitToBeClickable(driver, specBtn, 10);
+		} catch (org.openqa.selenium.StaleElementReferenceException e) {
+			Thread.sleep(2000);
+			clickModelPageVarientHeadSpecs(driver);
+		}
 	}
+
 	public void clickModelPageVarientBtn() throws InterruptedException {
 		variantBtn.click();
 	}
-	public LinkedHashMap<String, ArrayList<ArrayList<String>>> getModelPageModelOverViewImpSpecification(WebDriver driver)
-			throws InterruptedException {
+
+	public LinkedHashMap<String, ArrayList<ArrayList<String>>> getModelPageModelOverViewImpSpecification(
+			WebDriver driver) throws InterruptedException {
 		LinkedHashMap<String, ArrayList<ArrayList<String>>> al3 = new LinkedHashMap<String, ArrayList<ArrayList<String>>>();
 		overviewBtn.click();
-		List<WebElement> specificationBtnLst = driver
-				.findElements(By.cssSelector("(//div[@dir='ltr'])[3]//button"));
+		List<WebElement> specificationBtnLst = driver.findElements(By.cssSelector("(//div[@dir='ltr'])[3]//button"));
 		wait.until(ExpectedConditions.visibilityOfAllElements(specificationBtnLst));
 		for (WebElement btn : specificationBtnLst) {
 			wait.until(ExpectedConditions.visibilityOf(btn));
@@ -157,11 +166,17 @@ public class ModelPage {
 		Thread.sleep(2000);
 		specificationBtn.click();
 	}
-	public LinkedHashMap<String, ArrayList<LinkedHashMap<String, String>>> getModelPageModelImpSpecificationNishit(WebDriver driver)
-			throws InterruptedException {
+
+	public LinkedHashMap<String, ArrayList<LinkedHashMap<String, String>>> getModelPageModelImpSpecificationNishit(
+			WebDriver driver,String var) throws InterruptedException {
+		
 		LinkedHashMap<String, ArrayList<LinkedHashMap<String, String>>> lmp = new LinkedHashMap<String, ArrayList<LinkedHashMap<String, String>>>();
-		WaitUtils.waitToBeClickable(driver, specificationBtn, 10);
-		specificationBtn.click();
+//		variantBtn.click();
+//		By varBtnLocator = By.linkText("\"" + var + "\"");
+//		//wait.until(ExpectedConditions.elementToBeClickable(varBtnLocator));
+//		act.click(driver.findElement(varBtnLocator)).perform();
+//		WaitUtils.waitToBeClickable(driver, specificationBtn, 10);
+//		specificationBtn.click();
 		WaitUtils.waitToBeClickable(driver, specificationBtn, 10);
 		List<WebElement> specificationBtnLst = driver
 				.findElements(By.cssSelector("span.mr-auto.text-start.ml-\\[10px\\]"));
@@ -173,22 +188,23 @@ public class ModelPage {
 			ArrayList<LinkedHashMap<String, String>> al2 = new ArrayList<LinkedHashMap<String, String>>();
 			List<WebElement> rowLst = driver.findElements(By.xpath("//span[.='" + spec + "']/ancestor::div[2]//li"));
 			for (WebElement r : rowLst) {
-				
-				LinkedHashMap<String, String> mp=new LinkedHashMap<String, String>();
+
+				LinkedHashMap<String, String> mp = new LinkedHashMap<String, String>();
 				List<WebElement> eles = r.findElements(By.xpath("./*"));
 				String key = eles.get(0).getText();
 				String val = eles.get(1).getText();
 				if (val.isEmpty()) {
-					val=key;
+					val = key;
 				}
 				mp.put(key, val);
-				//System.out.println(mp.toString());
+				// System.out.println(mp.toString());
 				al2.add(mp);
 			}
 			lmp.put(spec, al2);
 		}
 		return lmp;
 	}
+
 	public LinkedHashMap<String, ArrayList<ArrayList<String>>> getModelPageModelImpSpecification(WebDriver driver)
 			throws InterruptedException {
 		LinkedHashMap<String, ArrayList<ArrayList<String>>> al3 = new LinkedHashMap<String, ArrayList<ArrayList<String>>>();
@@ -465,7 +481,9 @@ public class ModelPage {
 		}
 		return lmp;
 	}
-	public LinkedHashMap<String, String> getModelPageModelOverviewImpSpec(WebDriver driver) throws InterruptedException {
+
+	public LinkedHashMap<String, String> getModelPageModelOverviewImpSpec(WebDriver driver)
+			throws InterruptedException {
 
 		overviewBtn.click();
 		LinkedHashMap<String, String> lmp12 = new LinkedHashMap<String, String>();
@@ -487,16 +505,16 @@ public class ModelPage {
 	}
 
 	public LinkedHashMap<String, String> getModelPageModelShowroomPrice(WebDriver driver) throws InterruptedException {
-        WaitUtils.waitToBeClickable(driver, PriceBtn, 10);
+		WaitUtils.waitToBeClickable(driver, PriceBtn, 10);
 		PriceBtn.click();
 		LinkedHashMap<String, String> lmp12 = new LinkedHashMap<String, String>();
 		Thread.sleep(5000);
-		 WaitUtils.waitToBeClickable(driver, PriceBtn, 10);
+		WaitUtils.waitToBeClickable(driver, PriceBtn, 10);
 		WaitUtils.waitUptoVisibilityOfAllElement(driver, exShrPriceVarLst, 10);
 		int i = 0;
 		for (WebElement var : exShrPriceVarLst) {
-			//WaitUtils.waitToBeClickable(driver, var, 10);
-			//WaitUtils.waitToBeClickable(driver, exShrPriceVarLst1.get(i), 10);
+			// WaitUtils.waitToBeClickable(driver, var, 10);
+			// WaitUtils.waitToBeClickable(driver, exShrPriceVarLst1.get(i), 10);
 			String fk = var.getDomProperty("textContent").trim().replaceAll("\\s+", " ");
 			String fv = exShrPriceVarLst1.get(i).getDomProperty("textContent");
 			i++;
@@ -510,33 +528,34 @@ public class ModelPage {
 		}
 		return lmp12;
 	}
-	public ArrayList<String> getModelPageModelShowroomPriceNishit(WebDriver driver,String var) throws InterruptedException {
-        WaitUtils.waitToBeClickable(driver, PriceBtn, 10);
-		PriceBtn.click();
-		LinkedHashMap<String, String> lmp12 = new LinkedHashMap<String, String>();
-		Thread.sleep(5000);
-		 WaitUtils.waitToBeClickable(driver, PriceBtn, 10);
-		WaitUtils.waitUptoVisibilityOfAllElement(driver, exShrPriceVarLst, 10);
-		WebElement varName=driver.findElement(By.xpath("//span[.='"+var+"']"));
-		act.click(varName).perform();
-		List<WebElement> valLst=varName.findElements(By.xpath("./../../../div//strong"));
-		ArrayList<String> Lst = UtilityClass.getListOfWebElement(valLst);
-		////span[.='GDI DCT SX(O) Turbo P']/../../../div//strong
-//		int i = 0;
-//		for (WebElement var1 : exShrPriceVarLst) {
-//			//WaitUtils.waitToBeClickable(driver, var, 10);
-//			//WaitUtils.waitToBeClickable(driver, exShrPriceVarLst1.get(i), 10);
-//			String fk = var1.getDomProperty("textContent").trim().replaceAll("\\s+", " ");
-//			String fv = exShrPriceVarLst1.get(i).getDomProperty("textContent");
-//			i++;
-//			Thread.sleep(200);
-//			if (!lmp12.containsKey(fk)) {
-//				lmp12.put(fk, fv);
-//				System.out.println(lmp12.toString());
-//			} else {
-//				System.out.println("Error= Duplicate key in hashed map found");
-//			}
+
+	public ArrayList<String> getModelPageModelShowroomPriceNishit(WebDriver driver, String var)
+			throws InterruptedException {
+//		UtilityClass.scrollUpToWebElement(driver, PriceBtn);
+//		try {
+//			WaitUtils.waitToBeClickable(driver, PriceBtn, 10);
+//			PriceBtn.click();
+//			Thread.sleep(4000);
+//			WaitUtils.waitToBeClickable(driver, PriceBtn, 10);
+//		} catch (org.openqa.selenium.StaleElementReferenceException e) {
+//			WaitUtils.waitToBeClickable(driver, PriceBtn, 10);
+//			PriceBtn.click();
+//			Thread.sleep(4000);
+//			WaitUtils.waitToBeClickable(driver, PriceBtn, 10);
 //		}
+		
+//		WaitUtils.waitUptoVisibilityOfAllElement(driver, exShrPriceVarLst, 10);
+		
+//		Thread.sleep(4000);
+		WebElement varName = driver.findElement(By.xpath("(//span[.='" + var + "']/..)"));
+		UtilityClass.scrollUpToWebElement(driver, varName);
+		JavascriptExecutor js = (JavascriptExecutor) driver;
+	//	js.executeScript("window.scrollBy(0, 3000);"); // Scroll up by 500 pixels
+	//	WaitUtils.waitToBeClickable(driver, varName, 10);
+	//	varName.click();
+		act.click(varName).perform();
+		List<WebElement> valLst = varName.findElements(By.xpath("./../../../div//strong"));
+		ArrayList<String> Lst = UtilityClass.getListOfWebElement(valLst);
 		return Lst;
 	}
 

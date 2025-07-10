@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
+<testng-results ignored="0" total="3" passed="3" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2025-07-08T12:56:07 IST" name="Default suite" finished-at="2025-07-08T12:56:46 IST" duration-ms="39032">
+  <suite started-at="2025-07-10T15:27:17 IST" name="Default suite" finished-at="2025-07-10T15:27:59 IST" duration-ms="42052">
     <groups>
     </groups>
-    <test started-at="2025-07-08T12:56:07 IST" name="Default test" finished-at="2025-07-08T12:56:46 IST" duration-ms="39032">
+    <test started-at="2025-07-10T15:27:17 IST" name="Default test" finished-at="2025-07-10T15:27:59 IST" duration-ms="42052">
       <class name="Test1.VarDetailTC">
-        <test-method is-config="true" signature="openBrowser()[pri:0, instance:Test1.VarDetailTC@6c4906d3]" started-at="2025-07-08T12:56:07 IST" name="openBrowser" finished-at="2025-07-08T12:56:17 IST" duration-ms="10330" status="PASS">
+        <test-method is-config="true" signature="openBrowser()[pri:0, instance:Test1.VarDetailTC@71075444]" started-at="2025-07-10T15:27:17 IST" name="openBrowser" finished-at="2025-07-10T15:27:24 IST" duration-ms="6700" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- openBrowser -->
-        <test-method is-config="true" signature="login()[pri:0, instance:Test1.VarDetailTC@6c4906d3]" started-at="2025-07-08T12:56:19 IST" name="login" finished-at="2025-07-08T12:56:19 IST" duration-ms="3" status="PASS">
+        <test-method is-config="true" signature="login()[pri:0, instance:Test1.VarDetailTC@71075444]" started-at="2025-07-10T15:27:25 IST" name="login" finished-at="2025-07-10T15:27:25 IST" duration-ms="3" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- login -->
-        <test-method signature="getModelPageDataTest(java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String)[pri:0, instance:Test1.VarDetailTC@6c4906d3]" started-at="2025-07-08T12:56:19 IST" name="getModelPageDataTest" data-provider="ModelDS" finished-at="2025-07-08T12:56:46 IST" duration-ms="26573" status="PASS">
+        <test-method signature="getModelPageDataTest(java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String)[pri:0, instance:Test1.VarDetailTC@71075444]" started-at="2025-07-10T15:27:25 IST" name="getModelPageDataTest" data-provider="ModelDS" finished-at="2025-07-10T15:27:40 IST" duration-ms="15114" status="PASS">
           <params>
             <param index="0">
               <value>
@@ -46,7 +46,77 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- getModelPageDataTest -->
-        <test-method is-config="true" signature="closeBrowser()[pri:0, instance:Test1.VarDetailTC@6c4906d3]" started-at="2025-07-08T12:56:46 IST" name="closeBrowser" finished-at="2025-07-08T12:56:46 IST" duration-ms="2" status="PASS">
+        <test-method signature="getModelPageDataTest(java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String)[pri:0, instance:Test1.VarDetailTC@71075444]" started-at="2025-07-10T15:27:40 IST" name="getModelPageDataTest" data-provider="ModelDS" finished-at="2025-07-10T15:27:48 IST" duration-ms="8660" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[2]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[Tata]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[Nexon EV]]>
+              </value>
+            </param>
+            <param index="3">
+              <value>
+                <![CDATA[Fearless +]]>
+              </value>
+            </param>
+            <param index="4">
+              <value>
+                <![CDATA[ev]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- getModelPageDataTest -->
+        <test-method is-config="true" signature="login()[pri:0, instance:Test1.VarDetailTC@71075444]" started-at="2025-07-10T15:27:40 IST" name="login" finished-at="2025-07-10T15:27:40 IST" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- login -->
+        <test-method signature="getModelPageDataTest(java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String)[pri:0, instance:Test1.VarDetailTC@71075444]" started-at="2025-07-10T15:27:48 IST" name="getModelPageDataTest" data-provider="ModelDS" finished-at="2025-07-10T15:27:59 IST" duration-ms="10338" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[3]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[Hyundai]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[Creta]]>
+              </value>
+            </param>
+            <param index="3">
+              <value>
+                <![CDATA[S(O) D MT DT Knight]]>
+              </value>
+            </param>
+            <param index="4">
+              <value>
+                <![CDATA[nev]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- getModelPageDataTest -->
+        <test-method is-config="true" signature="login()[pri:0, instance:Test1.VarDetailTC@71075444]" started-at="2025-07-10T15:27:48 IST" name="login" finished-at="2025-07-10T15:27:48 IST" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- login -->
+        <test-method is-config="true" signature="closeBrowser()[pri:0, instance:Test1.VarDetailTC@71075444]" started-at="2025-07-10T15:27:59 IST" name="closeBrowser" finished-at="2025-07-10T15:27:59 IST" duration-ms="2" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- closeBrowser -->

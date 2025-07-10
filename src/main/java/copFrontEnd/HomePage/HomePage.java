@@ -39,6 +39,7 @@ WebDriverWait wait;
 	public void clickHomePageSearchBox() throws InterruptedException {
         searchBoxInp.click();}
 	public void inpHomePageSearchBox(WebDriver driver, String model) throws InterruptedException {
+		searchBoxInp.clear();
         searchBoxInp.sendKeys(model);
     //    System.out.println(model); 
 		Thread.sleep(3000);

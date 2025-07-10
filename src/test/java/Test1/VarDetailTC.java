@@ -5,6 +5,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.time.Duration;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -13,6 +14,7 @@ import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.openqa.selenium.JavascriptExecutor;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -20,6 +22,7 @@ import org.testng.asserts.SoftAssert;
 
 import com.dataProviders.beDP.ModelDP;
 import com.libraryFiles.BaseClass;
+import com.libraryFiles.UtilityClass;
 import com.utils.DataCompareMethods;
 
 import copFrontEnd.SelectCityPopUp;
@@ -30,7 +33,7 @@ import copFrontEnd.c5AllBrand.ModelPage;
 
 public class VarDetailTC extends BaseClass {
 	static {
-		ModelDP.setParam("Sheet1", 1, 1);
+		ModelDP.setParam("Sheet1", 1, 3);
 	}
 	SoftAssert soft;
 	BrandPage brandPg;
@@ -52,7 +55,7 @@ public class VarDetailTC extends BaseClass {
 		abp = new AllBrandPage(driver);
 		brandPg = new BrandPage(driver);
 		modelPg = new ModelPage(driver);
-		selCityPop.clickSelectCityPopUp(driver);
+		 selCityPop.clickSelectCityPopUp(driver);
 	}
 
 	@BeforeMethod
@@ -63,15 +66,28 @@ public class VarDetailTC extends BaseClass {
 	@Test(dataProvider = "ModelDS", dataProviderClass = ModelDP.class)
 	public void getModelPageDataTest(String Sr, String Brand, String Model, String Var, String FuelType)
 			throws IOException, InterruptedException {
-		homepage.inpHomePageSearchBox(driver, Brand + " " + Model + " " + Var);
-		modelPg.clickModelPageVarientHeadSpecs(driver);
 
-		LinkedHashMap<String, ArrayList<LinkedHashMap<String, String>>> impSpecMap = modelPg
-				.getModelPageModelImpSpecificationNishit(driver);
-		System.out.println("ImpSpecMap=" + impSpecMap.toString());
+		String url = "https://caronphone.com/"; 
+		String uri1= Brand.toLowerCase().replace(" ", "-") + "-cars/"
+				+ Model.toLowerCase().replace(" ", "-") + "/" + Var.toLowerCase().replace(" ", "-");
+
+		driver.get(url+uri1.replace("+", "plus").replace(".", "").replace("(", "").replace(")", "") + "/specifications");
+	
+		// modelPg.clickModelPageVarientHeadSpecs(driver);
+		// homepage.inpHomePageSearchBox(driver, Brand + " " + Model + " " + Var);
+
 		String Engine = "", Power = "", Transmission = "", Mileage = "", Fuel = "", Tank_Capacity = "", Gear_Box = "",
 				Range = "", Charging_Time_AC = "", Charging_Time_DC = "", Charging_Port = "";
-		if (FuelType.equals("nev")) {
+		LinkedHashMap<String, ArrayList<LinkedHashMap<String, String>>> impSpecMap = null;
+		if (impSpecMap != null) {
+			impSpecMap.clear();
+		}
+		impSpecMap = modelPg.getModelPageModelImpSpecificationNishit(driver, Var);
+
+		System.out.println("ImpSpecMap=" + impSpecMap.toString());
+
+		if (FuelType.trim().equalsIgnoreCase("nev")) {
+
 			Engine = DataCompareMethods.getImpSpecValue(impSpecMap, "Engine", "Displacement");
 			Power = DataCompareMethods.getImpSpecValue(impSpecMap, "Engine", "Power");
 			Transmission = DataCompareMethods.getImpSpecValue(impSpecMap, "Transmission", "Type of Transmission");
@@ -86,7 +102,8 @@ public class VarDetailTC extends BaseClass {
 			System.out.println("Fuel=" + Fuel);
 			System.out.println("Tank_Capacity=" + Tank_Capacity);
 			System.out.println("Gear_Box=" + Gear_Box);
-		} else if (FuelType.equals("ev")) {
+		} else if (FuelType.trim().equalsIgnoreCase("ev")) {
+
 			Engine = DataCompareMethods.getImpSpecValue(impSpecMap, "Engine", "Battery Capacity");
 			Power = DataCompareMethods.getImpSpecValue(impSpecMap, "Engine", "Power (EV)");
 			Range = DataCompareMethods.getImpSpecValue(impSpecMap, "Engine", "Range");
@@ -111,6 +128,12 @@ public class VarDetailTC extends BaseClass {
 		System.out.println("Warranty_years=" + Warranty_years);
 		System.out.println("Warranty_km=" + Warranty_km);
 
+		String uri2 =  Brand.toLowerCase().replace(" ", "-") + "-cars/"
+				+ Model.toLowerCase().replace(" ", "-");
+
+		driver.get(url+uri2.replace("+", "plus").replace(".", "").replace("(", "").replace(")", "")+ "/price");
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+	
 		ArrayList<String> Price = modelPg.getModelPageModelShowroomPriceNishit(driver, Var);
 		System.out.println("Price=" + Price.toString());
 		String Ex_showroom = "₹ " + Price.get(0);
@@ -128,7 +151,8 @@ public class VarDetailTC extends BaseClass {
 		dataMap.put(Brand + Model + Var, "");
 		dataMap.put("   ", "   ");
 		dataMap.put("SPECIFICATION", "");
-		if (FuelType.equals("nev")) {
+
+		if (FuelType.trim().equalsIgnoreCase("nev")) {
 			dataMap.put("Engine", Engine);
 			dataMap.put("Power", Power);
 			dataMap.put("Transmission", Transmission);
@@ -138,7 +162,7 @@ public class VarDetailTC extends BaseClass {
 			dataMap.put("KEY FEATURES", "");
 			dataMap.put("Tank Capacity", Tank_Capacity);
 			dataMap.put("Gear Box", Gear_Box);
-		} else if (FuelType.equals("ev")) {
+		} else if (FuelType.trim().equalsIgnoreCase("ev")) {
 			dataMap.put("Battery Capacity", Engine);
 			dataMap.put("Power (EV)", Power);
 			dataMap.put("Range", Range);
@@ -161,32 +185,7 @@ public class VarDetailTC extends BaseClass {
 		dataMap.put("On Road", On_Road);
 
 		writeCarDataToExcel(Brand, Model, Var, dataMap);
-//		// === Create Excel Workbook and Sheet ===
-//		XSSFWorkbook workbook = new XSSFWorkbook();
-//		XSSFSheet sheet = workbook.createSheet(Brand + Model + Var);
-//
-//		int rowIndex = 0;
-//		for (Map.Entry<String, String> entry : dataMap.entrySet()) {
-//			Row row = sheet.createRow(rowIndex++);
-//			Cell keyCell = row.createCell(0);
-//			Cell valueCell = row.createCell(1);
-//
-//			keyCell.setCellValue(entry.getKey());
-//			valueCell.setCellValue(entry.getValue());
-//		}
-//
-//		// === Auto-size Columns ===
-//		sheet.autoSizeColumn(0);
-//		sheet.autoSizeColumn(1);
-//
-//		// === Write to Excel File ===
-//		String filePath = ".\\OutputCarData\\OutputCar.xlsx";
-//		try (FileOutputStream fileOut = new FileOutputStream(filePath)) {
-//			workbook.write(fileOut);
-//		}
-//		workbook.close();
-//		System.out.println("Excel file created: " + filePath);
-//
+
 	}
 
 	public static void writeCarDataToExcel(String brand, String model, String var, Map<String, String> dataMap)
@@ -207,6 +206,15 @@ public class VarDetailTC extends BaseClass {
 
 		// 2. Create new sheet with Brand+Model+Var
 		String sheetName = brand + model + var;
+
+		// ⚠️ If sheet already exists, remove it
+		XSSFSheet existingSheet = workbook.getSheet(sheetName);
+		if (existingSheet != null) {
+			int index = workbook.getSheetIndex(existingSheet);
+			workbook.removeSheetAt(index);
+		}
+
+		// Now create the new sheet
 		XSSFSheet sheet = workbook.createSheet(sheetName);
 
 		// 3. Write data

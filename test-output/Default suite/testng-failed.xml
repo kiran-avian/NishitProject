@@ -5,7 +5,7 @@
     <classes>
       <class name="Test1.VarDetailTC">
         <methods>
-          <include name="getModelPageDataTest" invocation-numbers="0"/>
+          <include name="getModelPageDataTest" invocation-numbers="2"/>
           <include name="closeBrowser"/>
           <include name="openBrowser"/>
           <include name="login"/>
