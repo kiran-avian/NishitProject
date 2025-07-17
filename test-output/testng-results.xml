@@ -2,20 +2,20 @@
 <testng-results ignored="0" total="3" passed="3" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2025-07-10T15:27:17 IST" name="Default suite" finished-at="2025-07-10T15:27:59 IST" duration-ms="42052">
+  <suite started-at="2025-07-16T18:28:40 IST" name="Default suite" finished-at="2025-07-16T18:29:54 IST" duration-ms="73681">
     <groups>
     </groups>
-    <test started-at="2025-07-10T15:27:17 IST" name="Default test" finished-at="2025-07-10T15:27:59 IST" duration-ms="42052">
+    <test started-at="2025-07-16T18:28:40 IST" name="Default test" finished-at="2025-07-16T18:29:54 IST" duration-ms="73681">
       <class name="Test1.VarDetailTC">
-        <test-method is-config="true" signature="openBrowser()[pri:0, instance:Test1.VarDetailTC@71075444]" started-at="2025-07-10T15:27:17 IST" name="openBrowser" finished-at="2025-07-10T15:27:24 IST" duration-ms="6700" status="PASS">
+        <test-method is-config="true" signature="openBrowser()[pri:0, instance:Test1.VarDetailTC@71075444]" started-at="2025-07-16T18:28:40 IST" name="openBrowser" finished-at="2025-07-16T18:29:03 IST" duration-ms="23055" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- openBrowser -->
-        <test-method is-config="true" signature="login()[pri:0, instance:Test1.VarDetailTC@71075444]" started-at="2025-07-10T15:27:25 IST" name="login" finished-at="2025-07-10T15:27:25 IST" duration-ms="3" status="PASS">
+        <test-method is-config="true" signature="login()[pri:0, instance:Test1.VarDetailTC@71075444]" started-at="2025-07-16T18:29:05 IST" name="login" finished-at="2025-07-16T18:29:05 IST" duration-ms="6" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- login -->
-        <test-method signature="getModelPageDataTest(java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String)[pri:0, instance:Test1.VarDetailTC@71075444]" started-at="2025-07-10T15:27:25 IST" name="getModelPageDataTest" data-provider="ModelDS" finished-at="2025-07-10T15:27:40 IST" duration-ms="15114" status="PASS">
+        <test-method signature="getModelPageDataTest(java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String)[pri:0, instance:Test1.VarDetailTC@71075444]" started-at="2025-07-16T18:29:05 IST" name="getModelPageDataTest" data-provider="ModelDS" finished-at="2025-07-16T18:29:30 IST" duration-ms="24823" status="PASS">
           <params>
             <param index="0">
               <value>
@@ -46,7 +46,11 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- getModelPageDataTest -->
-        <test-method signature="getModelPageDataTest(java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String)[pri:0, instance:Test1.VarDetailTC@71075444]" started-at="2025-07-10T15:27:40 IST" name="getModelPageDataTest" data-provider="ModelDS" finished-at="2025-07-10T15:27:48 IST" duration-ms="8660" status="PASS">
+        <test-method is-config="true" signature="login()[pri:0, instance:Test1.VarDetailTC@71075444]" started-at="2025-07-16T18:29:30 IST" name="login" finished-at="2025-07-16T18:29:30 IST" duration-ms="2" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- login -->
+        <test-method signature="getModelPageDataTest(java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String)[pri:0, instance:Test1.VarDetailTC@71075444]" started-at="2025-07-16T18:29:30 IST" name="getModelPageDataTest" data-provider="ModelDS" finished-at="2025-07-16T18:29:41 IST" duration-ms="11458" status="PASS">
           <params>
             <param index="0">
               <value>
@@ -77,11 +81,11 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- getModelPageDataTest -->
-        <test-method is-config="true" signature="login()[pri:0, instance:Test1.VarDetailTC@71075444]" started-at="2025-07-10T15:27:40 IST" name="login" finished-at="2025-07-10T15:27:40 IST" duration-ms="0" status="PASS">
+        <test-method is-config="true" signature="login()[pri:0, instance:Test1.VarDetailTC@71075444]" started-at="2025-07-16T18:29:41 IST" name="login" finished-at="2025-07-16T18:29:41 IST" duration-ms="1" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- login -->
-        <test-method signature="getModelPageDataTest(java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String)[pri:0, instance:Test1.VarDetailTC@71075444]" started-at="2025-07-10T15:27:48 IST" name="getModelPageDataTest" data-provider="ModelDS" finished-at="2025-07-10T15:27:59 IST" duration-ms="10338" status="PASS">
+        <test-method signature="getModelPageDataTest(java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String)[pri:0, instance:Test1.VarDetailTC@71075444]" started-at="2025-07-16T18:29:41 IST" name="getModelPageDataTest" data-provider="ModelDS" finished-at="2025-07-16T18:29:54 IST" duration-ms="12697" status="PASS">
           <params>
             <param index="0">
               <value>
@@ -112,11 +116,7 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- getModelPageDataTest -->
-        <test-method is-config="true" signature="login()[pri:0, instance:Test1.VarDetailTC@71075444]" started-at="2025-07-10T15:27:48 IST" name="login" finished-at="2025-07-10T15:27:48 IST" duration-ms="0" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- login -->
-        <test-method is-config="true" signature="closeBrowser()[pri:0, instance:Test1.VarDetailTC@71075444]" started-at="2025-07-10T15:27:59 IST" name="closeBrowser" finished-at="2025-07-10T15:27:59 IST" duration-ms="2" status="PASS">
+        <test-method is-config="true" signature="closeBrowser()[pri:0, instance:Test1.VarDetailTC@71075444]" started-at="2025-07-16T18:29:54 IST" name="closeBrowser" finished-at="2025-07-16T18:29:54 IST" duration-ms="0" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- closeBrowser -->
